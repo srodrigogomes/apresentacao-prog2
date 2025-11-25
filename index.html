@@ -3,273 +3,328 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Roteiro Interativo — Naruto no Multiverso</title>
+  <title>Guia Completo de Defesa — Naruto no Multiverso</title>
   <style>
-    :root{--bg:#0b1020;--card:#0f1724;--accent:#ffb86b;--muted:#9aa7bf;--text:#e6eef8}
-    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; margin:0;background:linear-gradient(180deg,#071025 0%, #07122b 100%);color:var(--text)}
-    header{padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:16px}
-    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(90deg,#ff8a00,#ffb86b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05203a}
-    h1{font-size:20px;margin:0}
-    .container{display:flex;gap:20px;padding:22px}
-    nav{width:320px;min-width:260px}
-    .card{background:var(--card);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
+    :root{--bg:#0b1020;--card:#151e2e;--accent:#ff9f43;--accent-glow:rgba(255,159,67,0.15);--muted:#8b9bb4;--text:#e6eef8;--code-bg:#0d1117}
+    body{font-family:'Inter',system-ui,-apple-system,sans-serif;margin:0;background:linear-gradient(180deg,#071025 0%, #050b1a 100%);color:var(--text);line-height:1.6}
+    
+    /* Layout */
+    header{padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:16px;background:rgba(11,16,32,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#ff9f43,#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:20px;box-shadow:0 4px 12px var(--accent-glow)}
+    h1{font-size:20px;margin:0;font-weight:700;letter-spacing:-0.5px}
+    .container{display:flex;gap:32px;padding:32px;max-width:1400px;margin:0 auto}
+    
+    /* Nav */
+    nav{width:300px;min-width:300px;position:sticky;top:100px;height:fit-content;max-height:80vh;overflow-y:auto}
+    .nav-card{background:var(--card);border-radius:16px;padding:16px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
     .nav-list{list-style:none;padding:0;margin:0}
-    .nav-list li{margin:6px 0}
-    .nav-list button{width:100%;text-align:left;padding:10px 12px;border-radius:8px;border:0;background:transparent;color:var(--text);cursor:pointer}
-    .nav-list button:hover{background:rgba(255,255,255,0.02)}
-    main{flex:1;min-height:70vh}
-    section{display:none;padding:18px;border-radius:12px}
+    .nav-list li{margin-bottom:6px}
+    .nav-list button{width:100%;text-align:left;padding:12px 16px;border-radius:10px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px}
+    .nav-list button:hover{background:rgba(255,255,255,0.03);color:var(--text);transform:translateX(4px)}
+    .nav-list button.active{background:linear-gradient(90deg, rgba(255,159,67,0.1) 0%, transparent 100%);color:var(--accent);font-weight:600;border-left:3px solid var(--accent)}
+    
+    /* Main Content */
+    main{flex:1;min-height:80vh}
+    section{display:none;animation:fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)}
     section.active{display:block}
-    h2{margin-top:0}
-    .sub{color:var(--muted);margin-bottom:14px}
-    .qa{margin:12px 0}
-    .q{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;cursor:pointer}
-    .a{display:none;padding:10px 12px;background:rgba(255,255,255,0.01);border-radius:8px;margin-top:6px;color:var(--muted)}
-    .controls{display:flex;gap:10px;margin-bottom:14px}
-    a.link{color:var(--accent);text-decoration:none}
-    footer{padding:18px;text-align:center;color:var(--muted)}
-    pre{background:#061226;padding:12px;border-radius:8px;overflow:auto}
-    .pill{display:inline-block;background:rgba(255,184,107,0.12);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600}
-    @media(max-width:900px){.container{flex-direction:column}nav{width:100%}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    
+    h2{margin-top:0;font-size:28px;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:20px;margin-bottom:24px;color:#fff}
+    h3{margin-top:32px;margin-bottom:16px;font-size:20px;color:#fff;display:flex;align-items:center;gap:10px}
+    p{margin-bottom:18px;color:var(--muted);font-size:16px}
+    
+    /* Code & Technical Blocks */
+    .tech-box{background:var(--code-bg);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);margin-bottom:24px;font-family:'Fira Code',monospace;font-size:14px;overflow-x:auto}
+    code{background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;color:#ff9f43;font-family:'Fira Code',monospace;font-size:0.9em}
+    .function-name{color:#61afef;font-weight:bold}
+    .variable{color:#e06c75}
+    .keyword{color:#c678dd}
+    
+    /* Defense Tips (Questions) */
+    .defense-tip{background:rgba(255, 159, 67, 0.05);border-left:4px solid var(--accent);padding:20px;border-radius:0 12px 12px 0;margin:24px 0;position:relative}
+    .defense-tip strong{color:var(--accent);display:block;margin-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800}
+    .hot-question{background:rgba(255, 107, 107, 0.08);border-left:4px solid #ff6b6b}
+    .hot-question strong{color:#ff6b6b}
+
+    /* Diagrams (Visual Explanations) */
+    .visual-diagram{background:#0d1117;padding:20px;border-radius:12px;margin:20px 0;text-align:center;border:1px dashed #30363d}
+    .memory-block{display:inline-block;padding:10px 20px;background:#23272e;border:1px solid #3e4451;border-radius:6px;margin:0 5px;color:#abb2bf;font-size:13px}
+    .arrow{display:inline-block;margin:0 10px;color:#61afef;font-size:20px}
+    .null-char{color:#e06c75;font-weight:bold}
+    
+    /* Utility Tags */
+    .tag{display:inline-block;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700;margin-right:8px;text-transform:uppercase;letter-spacing:0.5px}
+    .tag.c{background:rgba(97, 175, 239, 0.15);color:#61afef}
+    .tag.mem{background:rgba(224, 108, 117, 0.15);color:#e06c75}
+    .tag.struct{background:rgba(198, 120, 221, 0.15);color:#c678dd}
+
+    @media(max-width:900px){.container{flex-direction:column;padding:16px}nav{width:100%;position:static;max-height:none}}
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo">NM</div>
     <div>
-      <h1>Roteiro Interativo — <span style="color:var(--accent)">Naruto no Multiverso</span></h1>
-      <div class="sub">Guia por páginas para apresentar o projeto. Use a navegação à esquerda.</div>
+      <h1>Defesa Técnica — <span style="color:var(--accent)">Naruto no Multiverso</span></h1>
+      <div style="font-size:13px;color:var(--muted)">Manual de explicações de código e arquitetura</div>
     </div>
   </header>
 
   <div class="container">
     <nav>
-      <div class="card">
-        <strong>Conteúdo</strong>
+      <div class="nav-card">
         <ul class="nav-list" id="navList">
-          <li><button data-target="page1">Página 1 — Visão Geral</button></li>
-          <li><button data-target="page2">Página 2 — Pastas do Projeto</button></li>
-          <li><button data-target="page3">Página 3 — Arquivos .h</button></li>
-          <li><button data-target="page4">Página 4 — Arquivos .c</button></li>
-          <li><button data-target="page5">Página 5 — CSV & Arquivos</button></li>
-          <li><button data-target="page6">Página 6 — Ponteiros & Realloc</button></li>
-          <li><button data-target="page7">Página 7 — Raylib</button></li>
-          <li><button data-target="page8">Página 8 — Fluxo do Jogo</button></li>
-          <li><button data-target="page9">Página 9 — Perguntas do Professor</button></li>
-          <li><button data-target="page10">Página 10 — Perguntas Avançadas</button></li>
-          <li><button data-target="page11">Página 11 — Sugestões de Melhoria</button></li>
-          <li><button data-target="page12">Página 12 — Conclusão & PDF</button></li>
+          <li><button class="active" data-target="intro">1. Introdução & Contexto</button></li>
+          <li><button data-target="structs">2. Structs & Tipos de Dados</button></li>
+          <li><button data-target="csv">3. Leitura de Arquivos (Deep Dive)</button></li>
+          <li><button data-target="memory">4. Memória: Malloc & Realloc</button></li>
+          <li><button data-target="logic">5. Lógica de String (Wordle)</button></li>
+          <li><button data-target="graphics">6. Raylib & Game Loop</button></li>
+          <li><button data-target="syntax">7. Perguntas de Sintaxe (C)</button></li>
+          <li><button data-target="closing">8. Encerramento</button></li>
         </ul>
-      </div>
-      <div style="height:12px"></div>
-      <div class="card">
-        <strong>Atalhos</strong>
-        <div style="margin-top:10px"><span class="pill">PDF</span> <a class="link" href="sandbox:/mnt/data/guia_naruto_multiverso.pdf" target="_blank" rel="noreferrer" data-file="/mnt/data/guia_naruto_multiverso.pdf">Baixar Guia em PDF</a></div>
-        <div style="margin-top:8px;color:var(--muted)">Arquivo local: <code>/mnt/data/guia_naruto_multiverso.pdf</code></div>
       </div>
     </nav>
 
     <main>
-      <div class="card">
-        <section id="page1" class="active">
-          <h2>Página 1 — Visão Geral do Projeto</h2>
-          <p class="sub">Breve apresentação para abrir a defesa: objetivo, escopo e tecnologias.</p>
-          <p><strong>Objetivo:</strong> jogo tipo Wordle com <em>cinemáticas</em> que atravessam temas (Dragon Ball, One Piece, Harry Potter, Resident Evil, Silent Hill, Final). O jogador descobre palavras-chave para avançar.</p>
-          <p><strong>Tecnologias:</strong> C (C11), Raylib para gráficos e áudio, arquivos CSV para banco de palavras, Makefile multiplataforma.</p>
-          <div class="qa">
-            <div class="q">O que eu preciso saber antes da apresentação?</div>
-            <div class="a">Foque no fluxo: carregar palavras → cinemática → jogar → avaliar tentativa → salvar progresso. Explique onde cada parte do código está (src/, include/, assets/) e esteja pronto para explicar fopen, fgets, strtok e realloc.</div>
+      
+      <!-- 1. INTRO -->
+      <section id="intro" class="active">
+        <div class="nav-card">
+          <h2>1. O Projeto: "Naruto no Multiverso"</h2>
+          <p>Um jogo educativo de adivinhação de palavras com narrativa visual, desenvolvido 100% em C.</p>
+          
+          <div class="tech-box">
+            <div style="margin-bottom:8px"><strong>🛠 Arquitetura do Projeto:</strong></div>
+            ├── <span class="variable">main.c</span> (Ponto de entrada, loop principal)<br>
+            ├── <span class="variable">jogo.c/h</span> (Lógica do Wordle, validação)<br>
+            ├── <span class="variable">palavras.c/h</span> (Gerenciamento de memória e CSV)<br>
+            ├── <span class="variable">cinematica.c/h</span> (Visual Novel, texturas)<br>
+            └── <span class="variable">interface.c/h</span> (Renderização Raylib)
           </div>
-        </section>
 
-        <section id="page2">
-          <h2>Página 2 — Pastas do Projeto</h2>
-          <p class="sub">Explicação por pasta: conteúdo, importância e possíveis perguntas.</p>
+          <div class="defense-tip hot-question">
+            <strong>🔥 Pergunta do Professor: "Por que dividir em tantos arquivos?"</strong>
+            <p>"Para respeitar o princípio de <strong>Separação de Responsabilidades</strong> (Separation of Concerns). Se tivéssemos tudo na <code>main.c</code>, o código seria ilegível e difícil de dar manutenção. Assim, se tiver um erro na lógica de palavras, eu sei exatamente onde procurar (`palavras.c`)."</p>
+          </div>
+          
+          <div class="defense-tip">
+            <strong>💡 Conceito Chave: Compilação Modular</strong>
+            Explique que cada arquivo <code>.c</code> é compilado individualmente em um arquivo objeto <code>.o</code> e depois o <strong>Linker</strong> junta tudo. Isso agiliza a compilação.
+          </div>
+        </div>
+      </section>
 
-          <h3>.vs / .vscode</h3>
-          <p>Contém configurações do IDE (Visual Studio e VSCode). Não influenciam na lógica do jogo.</p>
-          <div class="qa"><div class="q">Pergunta provável:</div><div class="a">"Posso subir essas pastas no Git?" — Não, devem estar no .gitignore. São configurações locais.</div></div>
+      <!-- 2. STRUCTS -->
+      <section id="structs">
+        <div class="nav-card">
+          <h2>2. Estruturas de Dados (Structs)</h2>
+          <p>Como organizamos as informações complexas do jogo.</p>
 
-          <h3>lib / libwin</h3>
-          <p>Contém <code>libraylib.a</code> (biblioteca estática). <code>libwin</code> é a versão compilada para Windows.</p>
-          <div class="qa"><div class="q">Pergunta provável:</div><div class="a">"Qual a diferença entre .a e .dll?" — <code>.a</code> é biblioteca estática; <code>.dll</code> é dinâmica. .a é linkada ao compilador.</div></div>
+          <div class="tech-box">
+<span class="keyword">typedef struct</span> {
+    <span class="keyword">char</span> palavra[30];
+    <span class="keyword">char</span> dica[100];
+    <span class="keyword">char</span> tema[30];
+    <span class="keyword">int</span> dificuldade;
+} <span class="variable">Palavra</span>;
+          </div>
 
-          <h3>assets</h3>
-          <p>Imagens, sprites, áudios e o CSV com as palavras. Essencial para rodar o jogo.</p>
-          <div class="qa"><div class="q">Pergunta possível:</div><div class="a">"O que acontece se um asset estiver faltando?" — O jogo checa com <code>FileExists()</code>; se faltar, algumas texturas não são carregadas e pode aparecer tela vazia ou fallback.</div></div>
+          <div class="defense-tip hot-question">
+             <strong>🔥 Pergunta: "Qual a diferença entre 'struct Palavra' e 'typedef struct ... Palavra'?"</strong>
+             <p>"O <code>typedef</code> cria um <strong>alias</strong> (apelido). Sem ele, eu teria que escrever <code>struct Palavra p1;</code> toda vez. Com o typedef, posso escrever apenas <code>Palavra p1;</code>, deixando o código mais limpo."</p>
+          </div>
 
-          <h3>src</h3>
-          <p>Todo o código-fonte. A pasta mais importante — dividida em módulos: main, jogo, interface, cinematica, palavras.</p>
+          <h3>Por que tamanhos fixos? (char palavra[30])</h3>
+          <p>Definimos <code>[30]</code> para evitar a complexidade de alocar cada string individualmente. É um compromisso entre uso de memória (stack) e simplicidade de código.</p>
+        </div>
+      </section>
 
-          <h3>include</h3>
-          <p>Headers da Raylib e protótipos do projeto. Importante para compilação e organização.</p>
+      <!-- 3. CSV -->
+      <section id="csv">
+        <div class="nav-card">
+          <h2>3. Leitura e Parsing de CSV</h2>
+          <p>Análise detalhada de como transformamos texto bruto em dados.</p>
 
-          <h3>obj / bin</h3>
-          <p>Gerados pela compilação: arquivos objeto (.o) e executável. Normalmente estão no .gitignore.</p>
+          <div class="visual-diagram">
+            <div style="margin-bottom:10px;font-weight:bold;color:#fff">Como o <code style="color:#e06c75">strtok</code> funciona:</div>
+            <div style="font-family:'Fira Code'; font-size:12px;">
+              String Original: "Naruto,Anime,Facil\n"
+              <br><br>
+              <span class="arrow">⬇</span> strtok(s, ",")
+              <br><br>
+              Memória: [<span style="color:#98c379">Naruto</span><span class="null-char">\0</span>Anime,Facil\n]
+              <br><span style="color:#5c6370;font-size:11px">A vírgula vira \0 (fim de string)</span>
+            </div>
+          </div>
 
-        </section>
+          <div class="tech-box">
+            <span class="function-name">strtok</span>(linha, <span class="variable">","</span>); <span class="keyword">// Retorna ponteiro para "Naruto"</span><br>
+            <span class="function-name">atoi</span>(token); <span class="keyword">// Converte string "1" para int 1</span>
+          </div>
 
-        <section id="page3">
-          <h2>Página 3 — Arquivos <code>.h</code></h2>
-          <p class="sub">Resumo das responsabilidades e pontos que o professor pode perguntar.</p>
+          <div class="defense-tip hot-question">
+            <strong>🔥 Pergunta: "O que é aquele 'strcspn' no código?"</strong>
+            <p>"<code>linha[strcspn(linha, \"\\n\")] = 0;</code> serve para remover a quebra de linha que o <code>fgets</code> lê do arquivo. Se não fizermos isso, a última palavra ficaria 'Facil\n' em vez de 'Facil', o que quebraria comparações de string."</p>
+          </div>
 
-          <h3>palavras.h</h3>
-          <p>Define <code>struct Palavra</code> e protótipos para carregar/adicionar/liberar palavras.</p>
-          <div class="qa"><div class="q">Pergunta:</div><div class="a">"Qual o tamanho máximo das strings?" — palavra 30, dica 100, tema 30. Explique risco de overflow se CSV tiver campos maiores.</div></div>
+          <div class="defense-tip">
+            <strong>💡 Tratamento de Erro</strong>
+            "Se <code>fopen</code> retornar <code>NULL</code> (arquivo não encontrado), o jogo não fecha. Ele carrega uma lista de backup hardcoded no código. Isso garante que o usuário sempre consiga jogar."
+          </div>
+        </div>
+      </section>
 
-          <h3>jogo.h</h3>
-          <p>Define <code>EstadoJogo</code>, <code>Tentativa</code>, constantes de tentativas e protótipos das funções do motor do jogo.</p>
-          <div class="qa"><div class="q">Pergunta:</div><div class="a">"Como é controlado o número de tentativas por fase?" — A variável <code>maxTentativasPermitidas</code> é definida em <code>inicializarJogo</code> conforme a fase.</div></div>
+      <!-- 4. MEMORIA -->
+      <section id="memory">
+        <div class="nav-card">
+          <h2>4. Gerenciamento de Memória</h2>
+          <p>O ponto mais crítico para provas de C. O uso de <code>realloc</code>.</p>
 
-          <h3>interface.h</h3>
-          <p>Protótipos para desenho do teclado, grid, menus e inicialização/fechamento da janela Raylib.</p>
+          <div class="visual-diagram">
+            <div style="margin-bottom:15px;font-weight:bold;color:#fff">Expansão de Array (Realloc)</div>
+            
+            <div style="margin-bottom:10px">
+              <span style="color:#61afef">Estado 1 (Cheio):</span>
+              <span class="memory-block">P1</span><span class="memory-block">P2</span>
+            </div>
+            
+            <span class="arrow">⬇</span> <span style="font-size:12px;color:#c678dd">realloc(ptr, 3 * sizeof(Palavra))</span>
+            
+            <div style="margin-top:10px">
+              <span style="color:#61afef">Estado 2 (Novo):</span>
+              <span class="memory-block">P1</span><span class="memory-block">P2</span><span class="memory-block" style="border-style:dashed;color:#5c6370">Vazio</span>
+            </div>
+          </div>
 
-          <h3>cinematica.h</h3>
-          <p>Contém as structs para recursos e estados de cinemática e protótipos para carregar/descarregar e executar as cenas.</p>
-        </section>
+          <div class="defense-tip hot-question">
+             <strong>🔥 Pergunta: "Se o realloc falhar, o que acontece com os dados antigos?"</strong>
+             <p>"Se falhar, ele retorna <code>NULL</code>, mas <strong>mantém</strong> o bloco de memória original intacto. Por isso usamos uma variável temporária: <code>temp = realloc(original...)</code>. Se fizéssemos <code>original = realloc...</code> e falhasse, perderíamos o acesso aos dados antigos (Memory Leak)."</p>
+          </div>
 
-        <section id="page4">
-          <h2>Página 4 — Arquivos <code>.c</code></h2>
-          <p class="sub">Explicação das funções-chave dentro de cada arquivo fonte.</p>
+          <div class="defense-tip">
+             <strong>💡 Free()</strong>
+             "Ao final do jogo, chamamos <code>free(listaPalavras)</code>. É crucial liberar a memória Heap antes do programa fechar para devolver recursos ao sistema operacional."
+          </div>
+        </div>
+      </section>
 
-          <h3>palavras.c</h3>
-          <p>Funções: <code>carregarPalavrasCSV</code>, <code>carregarPalavrasIniciais</code>, <code>adicionarPalavraDireta</code>, <code>liberarPalavras</code>. Usa <code>realloc</code> para crescer a lista dinamicamente.</p>
+      <!-- 5. LOGICA -->
+      <section id="logic">
+        <div class="nav-card">
+          <h2>5. Lógica do Wordle (Strings)</h2>
+          <p>Como comparamos o que o usuário digitou com a palavra secreta.</p>
+          
+          <div class="tech-box">
+            <span class="keyword">for</span> (i=0; i&lt;5; i++) {<br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (tentativa[i] == alvo[i]) <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;status[i] = <span class="variable">VERDE</span>; <span class="keyword">// Posição exata</span><br>
+            &nbsp;&nbsp;<span class="keyword">else if</span> (existeNaPalavra(tentativa[i]))<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;status[i] = <span class="variable">AMARELO</span>; <span class="keyword">// Letra existe em outro lugar</span><br>
+            }
+          </div>
 
-          <h3>jogo.c</h3>
-          <p>Mecânica de Wordle: <code>adicionarLetra</code>, <code>removerLetra</code>, <code>fazerTentativa</code>, <code>verificarLetra</code>, <code>selecionarPalavraAleatoria</code>. Atualiza teclado virtual e progresso.</p>
+          <div class="defense-tip">
+             <strong>💡 Case Sensitivity</strong>
+             "Para evitar erros se o usuário digitar 'a' e a senha for 'A', convertemos tudo para maiúsculo usando <code>toupper()</code> antes de comparar."
+          </div>
+        </div>
+      </section>
 
-          <h3>interface.c</h3>
-          <p>Funções de desenho: teclado, grid, menu de fases, mensagens finais, inicialização da janela e chamadas do Raylib (DrawTexture, DrawText).</p>
+      <!-- 6. GRAFICOS -->
+      <section id="graphics">
+        <div class="nav-card">
+          <h2>6. Gráficos (Raylib)</h2>
+          
+          <h3>FPS e Delta Time</h3>
+          <p>Para as cinemáticas não rodarem rápido demais em PCs potentes, usamos o conceito de tempo.</p>
+          
+          <div class="tech-box">
+            tempoDecorrido += <span class="function-name">GetFrameTime</span>();<br>
+            <span class="keyword">if</span> (tempoDecorrido > 2.0) { ...proximaCena... }
+          </div>
+          
+          <div class="defense-tip hot-question">
+             <strong>🔥 Pergunta: "O que o BeginDrawing faz?"</strong>
+             <p>"Ele prepara o buffer da GPU para receber comandos de desenho. Se tentarmos desenhar (DrawText) fora do bloco Begin/End, a tela pisca ou nada aparece, pois o buffer não estava aberto."</p>
+          </div>
+          
+          <div class="defense-tip">
+             <strong>💡 UnloadTexture</strong>
+             "Texturas ocupam VRAM (Memória de Vídeo). É essencial chamar <code>UnloadTexture()</code> quando trocamos de cena para não estourar a memória da placa de vídeo."
+          </div>
+        </div>
+      </section>
 
-          <h3>cinematica.c</h3>
-          <p>Carrega texturas, sprites e músicas; controla movimento do personagem nas cenas; desenha diálogos e transições. Atenção ao uso correto das structs <code>EstadoCinematica</code> vs <code>EstadoCinematicas</code>.</p>
+      <!-- 7. SINTAXE -->
+      <section id="syntax">
+        <div class="nav-card">
+          <h2>7. Perguntas Rápidas de Sintaxe</h2>
+          <p>Perguntas "pegadinha" que professores adoram fazer olhando para o código.</p>
 
-          <div class="qa"><div class="q">Pergunta crítica:</div><div class="a">"O que acontece se eu passar o tipo errado de struct para uma função?" — Pode compilar (ponteiros são tipos), mas terá corrupção de memória e comportamento indefinido; explique diferença de tamanhos e campos.</div></div>
-        </section>
+          <div style="display:grid;grid-template-columns:1fr 1fr; gap:16px">
+            <div class="defense-tip" style="margin:0">
+              <strong>#include "..." vs &lt;...&gt;</strong>
+              <p><code>&lt;stdio.h&gt;</code>: Busca nas pastas do sistema/compilador.<br>
+              <code>"jogo.h"</code>: Busca na pasta atual do projeto.</p>
+            </div>
+            
+            <div class="defense-tip" style="margin:0">
+              <strong>#ifndef HEADER_H</strong>
+              <p>São "Include Guards". Impedem que o mesmo arquivo .h seja incluído duas vezes, o que geraria erro de redefinição.</p>
+            </div>
 
-        <section id="page5">
-          <h2>Página 5 — Leitura de CSV & Arquivos</h2>
-          <p class="sub">Passo a passo do processo de leitura do CSV e manipulação segura.</p>
+            <div class="defense-tip" style="margin:0">
+              <strong>int argc, char *argv[]</strong>
+              <p>Argumentos de linha de comando. <code>argc</code> é a contagem, <code>argv</code> são os textos. Usamos para debug, se necessário.</p>
+            </div>
 
-          <ol>
-            <li><strong>Abrir o arquivo:</strong> <code>fopen(nome, "r")</code>; sempre verificar se retornou <code>NULL</code>.</li>
-            <li><strong>Ler linhas:</strong> <code>fgets(buffer, sizeof(buffer), arquivo)</code>.</li>
-            <li><strong>Remover \n:</strong> <code>linha[strcspn(linha, "\r\n")] = '\0';</code>.</li>
-            <li><strong>Dividir campos:</strong> use <code>strtok(linha, ",")</code> ou <code>sscanf</code> com limites: <code>%29[^,]</code>.</li>
-            <li><strong>Validar:</strong> checar número de tokens e conversão de inteiros com <code>atoi</code> ou <code>strtol</code>.</li>
-            <li><strong>Inserir:</strong> chamar <code>adicionarPalavraDireta</code> que usa <code>realloc</code> com verificação de NULL.</li>
-            <li><strong>Fechar:</strong> <code>fclose(arquivo)</code>.</li>
-          </ol>
+            <div class="defense-tip" style="margin:0">
+              <strong>static int x;</strong>
+              <p>Se estiver dentro de uma função, a variável mantém o valor entre chamadas. Se for global, ela só é visível naquele arquivo .c (privada).</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div class="qa"><div class="q">Pergunta do professor:</div><div class="a">"Como evitar buffer overflow ao ler CSV?" — Use limites no <code>strncpy</code>/<code>sscanf</code> e verifique o comprimento antes de copiar; valide cada token.</div></div>
-        </section>
-
-        <section id="page6">
-          <h2>Página 6 — Ponteiros & Alocação Dinâmica</h2>
-          <p class="sub">Conceitos práticos e exemplos retirados do código.</p>
-
-          <h4>Ponteiro para ponteiro (<code>Palavra **lista</code>)</h4>
-          <p>Usado para atualizar o endereço do bloco de memória original quando <code>realloc</code> muda o ponteiro base.</p>
-
-          <h4><code>realloc()</code></h4>
-          <p>Expansão dinâmica do vetor. Sempre salvar o retorno em variável temporária para checar <code>NULL</code> antes de sobrescrever o ponteiro original.</p>
-
-          <div class="qa"><div class="q">Pergunta:</div><div class="a">"O que fazer se realloc falhar?" — Não sobrescrever o ponteiro original; lidar com erro e liberar recursos se necessário. Mostrar código exemplar.</div></div>
-        </section>
-
-        <section id="page7">
-          <h2>Página 7 — Raylib (conceitos e uso)</h2>
-          <p class="sub">Resumo dos principais métodos do Raylib usados no projeto.</p>
+      <!-- 8. FECHAMENTO -->
+      <section id="closing">
+        <div class="nav-card">
+          <h2>8. Encerramento</h2>
+          <p>Resumo para finalizar a apresentação.</p>
+          
+          <p>O projeto demonstra domínio de:</p>
           <ul>
-            <li><code>InitWindow(w,h,titulo)</code> — inicializa a janela</li>
-            <li><code>InitAudioDevice()</code> — inicia áudio</li>
-            <li><code>LoadTexture/LoadImage</code> — carrega imagens</li>
-            <li><code>BeginDrawing() / EndDrawing()</code> — ciclo de desenho</li>
-            <li><code>DrawTexture / DrawText / DrawRectangle</code> — render primitives</li>
-            <li><code>LoadMusicStream / PlayMusicStream / UpdateMusicStream</code> — áudio</li>
+            <li>Alocação dinâmica e segurança de memória.</li>
+            <li>Persistência de dados (Arquivos).</li>
+            <li>Modularização e boas práticas de engenharia de software em C.</li>
           </ul>
-          <div class="qa"><div class="q">Pergunta:</div><div class="a">"O que acontece se você chamar DrawTexture fora de BeginDrawing/EndDrawing?" — comportamento indefinido: nada é desenhado corretamente e pode gerar warnings.</div></div>
-        </section>
+          
+          <div class="defense-tip hot-question" style="border-color:#2ecc71; background:rgba(46, 204, 113, 0.1)">
+             <strong style="color:#2ecc71">💡 Se o código quebrar na apresentação...</strong>
+             <p>"Mantenha a calma. Diga: 'Isso parece ser um caso de borda não tratado na leitura do arquivo local. No ambiente de desenvolvimento, validamos através dos testes X e Y'. Mostre que você entende o erro, mesmo que não consiga consertar na hora."</p>
+          </div>
+        </div>
+      </section>
 
-        <section id="page8">
-          <h2>Página 8 — Fluxo Completo do Jogo</h2>
-          <p class="sub">Passo a passo cronológico do que acontece quando o jogo roda.</p>
-          <ol>
-            <li>Programa inicia em <code>main()</code>: carrega palavras, inicializa interface e cinemática.</li>
-            <li>Menu principal — o jogador escolhe fase.</li>
-            <li>Executa cinemática de introdução (<code>executarCinematicaIntro</code>).</li>
-            <li>Seleciona palavra e chama <code>inicializarJogo</code>.</li>
-            <li>Loop do jogo: <code>processarEntrada</code> + <code>desenharJogo</code>.</li>
-            <li>Ao vencer → <code>TELA_RESULTADO</code> → <code>TELA_TRANSICAO</code> → salva progresso.</li>
-          </ol>
-          <div class="qa"><div class="q">Pergunta:</div><div class="a">"Onde é salvo o progresso?" — Em <code>progresso.dat</code> usando <code>fwrite</code>. O arquivo é binário e contém 6 ints.</div></div>
-        </section>
-
-        <section id="page9">
-          <h2>Página 9 — Perguntas Possíveis do Professor (Resumo Extenso)</h2>
-          <p class="sub">Lista grande com perguntas e respostas (prepare-se para a defesa!).</p>
-          <div class="qa"><div class="q">Como as palavras são carregadas?</div><div class="a">Primeiro tenta CSV; se falhar, usa lista interna com <code>adicionarPalavraDireta</code>.</div></div>
-          <div class="qa"><div class="q">O que é responsabilidade do Makefile?</div><div class="a">Detecta SO, compila arquivos .c, linka raylib, cria bin/ e obj/ e oferece comandos úteis (run, clean, rebuild).</div></div>
-          <div class="qa"><div class="q">Qual a diferença entre biblioteca estática e dinâmica?</div><div class="a">Estática (.a) é incorporada no binário na hora do link; dinâmica (.dll/.so) é carregada em execução.</div></div>
-
-          <p style="margin-top:10px;color:var(--muted)">(A página contém dezenas de perguntas — use a página 10 para as mais avançadas.)</p>
-        </section>
-
-        <section id="page10">
-          <h2>Página 10 — Perguntas Avançadas (Oral)</h2>
-          <p class="sub">Questões para impressionar e como responder.</p>
-
-          <div class="qa"><div class="q">Por que usar <code>Palavra **lista</code> e não retornar um novo ponteiro?</div><div class="a">Porque a função precisa atualizar o ponteiro no chamador. Alternativa: retornar o novo ponteiro e atualizar manualmente; o double-pointer permite modificação direta.</div></div>
-
-          <div class="qa"><div class="q">O que acontece se você esquecer de <code>fclose()</code>?</div><div class="a">Buffers podem não ser flushados, consumo de descriptor/pool e possível perda de dados; no fim do processo o sistema fecha, mas é má prática.</div></div>
-
-          <div class="qa"><div class="q">Como evitar segmentation fault ao acessar arrays?</div><div class="a">Sempre validar índices, garantir tamanho dos buffers e checar ponteiros antes de usar.</div></div>
-
-          <div class="qa"><div class="q">Como garantir que o CSV é seguro (sem injections)?</div><div class="a">Validar tokens, limitar tamanho, escapar caracteres se necessário; para dados externos, usar parser robusto.</div></div>
-        </section>
-
-        <section id="page11">
-          <h2>Página 11 — Sugestões de Melhoria</h2>
-          <p class="sub">Ideias rápidas para evoluir o projeto.</p>
-          <ul>
-            <li>Usar JSON em vez de CSV para evitar parsing complexo.</li>
-            <li>Adicionar testes unitários para funções de manipulação de strings.</li>
-            <li>Controlar memória com blocos maiores (reservar N elementos de cada vez) para performance.</li>
-            <li>Separar build para debug/release e adicionar logs.</li>
-            <li>Adicionar documentação no README com comandos make e dependências.</li>
-          </ul>
-        </section>
-
-        <section id="page12">
-          <h2>Página 12 — Conclusão & PDF</h2>
-          <p class="sub">Resumo final e link para o PDF com o guia completo.</p>
-          <p>Resumo: o projeto está modularizado, com boa separação de responsabilidades. Domine: fopen/fgets/strtok, realloc, structs e Raylib basics — isso cobre >80% das perguntas do professor.</p>
-          <p><a class="link" href="sandbox:/mnt/data/guia_naruto_multiverso.pdf" target="_blank" rel="noreferrer">Baixar versão em PDF do guia</a></p>
-        </section>
-      </div>
-
-      <footer>Use as páginas para ensaiar sua apresentação — posso exportar para MD, PDF ou GitHub Pages quando quiser.</footer>
     </main>
   </div>
 
   <script>
-    // navegação
-    document.querySelectorAll('#navList button').forEach(btn => {
+    const buttons = document.querySelectorAll('.nav-list button');
+    const sections = document.querySelectorAll('main section');
+
+    buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const target = btn.dataset.target;
-        document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
-        const el = document.getElementById(target);
-        if (el) el.classList.add('active');
-        window.scrollTo({top:0,behavior:'smooth'});
+        buttons.forEach(b => b.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
       });
     });
-
-    // toggle QA
-    document.querySelectorAll('.q').forEach(q => q.addEventListener('click', () => {
-      const next = q.nextElementSibling;
-      if (!next) return;
-      next.style.display = next.style.display === 'block' ? 'none' : 'block';
-    }));
   </script>
 </body>
 </html>
