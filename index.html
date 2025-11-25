@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roteiro Interativo — Naruto no Multiverso</title>
+  <style>
+    :root{--bg:#0b1020;--card:#0f1724;--accent:#ffb86b;--muted:#9aa7bf;--text:#e6eef8}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; margin:0;background:linear-gradient(180deg,#071025 0%, #07122b 100%);color:var(--text)}
+    header{padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:16px}
+    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(90deg,#ff8a00,#ffb86b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05203a}
+    h1{font-size:20px;margin:0}
+    .container{display:flex;gap:20px;padding:22px}
+    nav{width:320px;min-width:260px}
+    .card{background:var(--card);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
+    .nav-list{list-style:none;padding:0;margin:0}
+    .nav-list li{margin:6px 0}
+    .nav-list button{width:100%;text-align:left;padding:10px 12px;border-radius:8px;border:0;background:transparent;color:var(--text);cursor:pointer}
+    .nav-list button:hover{background:rgba(255,255,255,0.02)}
+    main{flex:1;min-height:70vh}
+    section{display:none;padding:18px;border-radius:12px}
+    section.active{display:block}
+    h2{margin-top:0}
+    .sub{color:var(--muted);margin-bottom:14px}
+    .qa{margin:12px 0}
+    .q{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;cursor:pointer}
+    .a{display:none;padding:10px 12px;background:rgba(255,255,255,0.01);border-radius:8px;margin-top:6px;color:var(--muted)}
+    .controls{display:flex;gap:10px;margin-bottom:14px}
+    a.link{color:var(--accent);text-decoration:none}
+    footer{padding:18px;text-align:center;color:var(--muted)}
+    pre{background:#061226;padding:12px;border-radius:8px;overflow:auto}
+    .pill{display:inline-block;background:rgba(255,184,107,0.12);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600}
+    @media(max-width:900px){.container{flex-direction:column}nav{width:100%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NM</div>
+    <div>
+      <h1>Roteiro Interativo — <span style="color:var(--accent)">Naruto no Multiverso</span></h1>
+      <div class="sub">Guia por páginas para apresentar o projeto. Use a navegação à esquerda.</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <div class="card">
+        <strong>Conteúdo</strong>
+        <ul class="nav-list" id="navList">
+          <li><button data-target="page1">Página 1 — Visão Geral</button></li>
+          <li><button data-target="page2">Página 2 — Pastas do Projeto</button></li>
+          <li><button data-target="page3">Página 3 — Arquivos .h</button></li>
+          <li><button data-target="page4">Página 4 — Arquivos .c</button></li>
+          <li><button data-target="page5">Página 5 — CSV & Arquivos</button></li>
+          <li><button data-target="page6">Página 6 — Ponteiros & Realloc</button></li>
+          <li><button data-target="page7">Página 7 — Raylib</button></li>
+          <li><button data-target="page8">Página 8 — Fluxo do Jogo</button></li>
+          <li><button data-target="page9">Página 9 — Perguntas do Professor</button></li>
+          <li><button data-target="page10">Página 10 — Perguntas Avançadas</button></li>
+          <li><button data-target="page11">Página 11 — Sugestões de Melhoria</button></li>
+          <li><button data-target="page12">Página 12 — Conclusão & PDF</button></li>
+        </ul>
+      </div>
+      <div style="height:12px"></div>
+      <div class="card">
+        <strong>Atalhos</strong>
+        <div style="margin-top:10px"><span class="pill">PDF</span> <a class="link" href="sandbox:/mnt/data/guia_naruto_multiverso.pdf" target="_blank" rel="noreferrer" data-file="/mnt/data/guia_naruto_multiverso.pdf">Baixar Guia em PDF</a></div>
+        <div style="margin-top:8px;color:var(--muted)">Arquivo local: <code>/mnt/data/guia_naruto_multiverso.pdf</code></div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="card">
+        <section id="page1" class="active">
+          <h2>Página 1 — Visão Geral do Projeto</h2>
+          <p class="sub">Breve apresentação para abrir a defesa: objetivo, escopo e tecnologias.</p>
+          <p><strong>Objetivo:</strong> jogo tipo Wordle com <em>cinemáticas</em> que atravessam temas (Dragon Ball, One Piece, Harry Potter, Resident Evil, Silent Hill, Final). O jogador descobre palavras-chave para avançar.</p>
+          <p><strong>Tecnologias:</strong> C (C11), Raylib para gráficos e áudio, arquivos CSV para banco de palavras, Makefile multiplataforma.</p>
+          <div class="qa">
+            <div class="q">O que eu preciso saber antes da apresentação?</div>
+            <div class="a">Foque no fluxo: carregar palavras → cinemática → jogar → avaliar tentativa → salvar progresso. Explique onde cada parte do código está (src/, include/, assets/) e esteja pronto para explicar fopen, fgets, strtok e realloc.</div>
+          </div>
+        </section>
+
+        <section id="page2">
+          <h2>Página 2 — Pastas do Projeto</h2>
+          <p class="sub">Explicação por pasta: conteúdo, importância e possíveis perguntas.</p>
+
+          <h3>.vs / .vscode</h3>
+          <p>Contém configurações do IDE (Visual Studio e VSCode). Não influenciam na lógica do jogo.</p>
+          <div class="qa"><div class="q">Pergunta provável:</div><div class="a">"Posso subir essas pastas no Git?" — Não, devem estar no .gitignore. São configurações locais.</div></div>
+
+          <h3>lib / libwin</h3>
+          <p>Contém <code>libraylib.a</code> (biblioteca estática). <code>libwin</code> é a versão compilada para Windows.</p>
+          <div class="qa"><div class="q">Pergunta provável:</div><div class="a">"Qual a diferença entre .a e .dll?" — <code>.a</code> é biblioteca estática; <code>.dll</code> é dinâmica. .a é linkada ao compilador.</div></div>
+
+          <h3>assets</h3>
+          <p>Imagens, sprites, áudios e o CSV com as palavras. Essencial para rodar o jogo.</p>
+          <div class="qa"><div class="q">Pergunta possível:</div><div class="a">"O que acontece se um asset estiver faltando?" — O jogo checa com <code>FileExists()</code>; se faltar, algumas texturas não são carregadas e pode aparecer tela vazia ou fallback.</div></div>
+
+          <h3>src</h3>
+          <p>Todo o código-fonte. A pasta mais importante — dividida em módulos: main, jogo, interface, cinematica, palavras.</p>
+
+          <h3>include</h3>
+          <p>Headers da Raylib e protótipos do projeto. Importante para compilação e organização.</p>
+
+          <h3>obj / bin</h3>
+          <p>Gerados pela compilação: arquivos objeto (.o) e executável. Normalmente estão no .gitignore.</p>
+
+        </section>
+
+        <section id="page3">
+          <h2>Página 3 — Arquivos <code>.h</code></h2>
+          <p class="sub">Resumo das responsabilidades e pontos que o professor pode perguntar.</p>
+
+          <h3>palavras.h</h3>
+          <p>Define <code>struct Palavra</code> e protótipos para carregar/adicionar/liberar palavras.</p>
+          <div class="qa"><div class="q">Pergunta:</div><div class="a">"Qual o tamanho máximo das strings?" — palavra 30, dica 100, tema 30. Explique risco de overflow se CSV tiver campos maiores.</div></div>
+
+          <h3>jogo.h</h3>
+          <p>Define <code>EstadoJogo</code>, <code>Tentativa</code>, constantes de tentativas e protótipos das funções do motor do jogo.</p>
+          <div class="qa"><div class="q">Pergunta:</div><div class="a">"Como é controlado o número de tentativas por fase?" — A variável <code>maxTentativasPermitidas</code> é definida em <code>inicializarJogo</code> conforme a fase.</div></div>
+
+          <h3>interface.h</h3>
+          <p>Protótipos para desenho do teclado, grid, menus e inicialização/fechamento da janela Raylib.</p>
+
+          <h3>cinematica.h</h3>
+          <p>Contém as structs para recursos e estados de cinemática e protótipos para carregar/descarregar e executar as cenas.</p>
+        </section>
+
+        <section id="page4">
+          <h2>Página 4 — Arquivos <code>.c</code></h2>
+          <p class="sub">Explicação das funções-chave dentro de cada arquivo fonte.</p>
+
+          <h3>palavras.c</h3>
+          <p>Funções: <code>carregarPalavrasCSV</code>, <code>carregarPalavrasIniciais</code>, <code>adicionarPalavraDireta</code>, <code>liberarPalavras</code>. Usa <code>realloc</code> para crescer a lista dinamicamente.</p>
+
+          <h3>jogo.c</h3>
+          <p>Mecânica de Wordle: <code>adicionarLetra</code>, <code>removerLetra</code>, <code>fazerTentativa</code>, <code>verificarLetra</code>, <code>selecionarPalavraAleatoria</code>. Atualiza teclado virtual e progresso.</p>
+
+          <h3>interface.c</h3>
+          <p>Funções de desenho: teclado, grid, menu de fases, mensagens finais, inicialização da janela e chamadas do Raylib (DrawTexture, DrawText).</p>
+
+          <h3>cinematica.c</h3>
+          <p>Carrega texturas, sprites e músicas; controla movimento do personagem nas cenas; desenha diálogos e transições. Atenção ao uso correto das structs <code>EstadoCinematica</code> vs <code>EstadoCinematicas</code>.</p>
+
+          <div class="qa"><div class="q">Pergunta crítica:</div><div class="a">"O que acontece se eu passar o tipo errado de struct para uma função?" — Pode compilar (ponteiros são tipos), mas terá corrupção de memória e comportamento indefinido; explique diferença de tamanhos e campos.</div></div>
+        </section>
+
+        <section id="page5">
+          <h2>Página 5 — Leitura de CSV & Arquivos</h2>
+          <p class="sub">Passo a passo do processo de leitura do CSV e manipulação segura.</p>
+
+          <ol>
+            <li><strong>Abrir o arquivo:</strong> <code>fopen(nome, "r")</code>; sempre verificar se retornou <code>NULL</code>.</li>
+            <li><strong>Ler linhas:</strong> <code>fgets(buffer, sizeof(buffer), arquivo)</code>.</li>
+            <li><strong>Remover \n:</strong> <code>linha[strcspn(linha, "\r\n")] = '\0';</code>.</li>
+            <li><strong>Dividir campos:</strong> use <code>strtok(linha, ",")</code> ou <code>sscanf</code> com limites: <code>%29[^,]</code>.</li>
+            <li><strong>Validar:</strong> checar número de tokens e conversão de inteiros com <code>atoi</code> ou <code>strtol</code>.</li>
+            <li><strong>Inserir:</strong> chamar <code>adicionarPalavraDireta</code> que usa <code>realloc</code> com verificação de NULL.</li>
+            <li><strong>Fechar:</strong> <code>fclose(arquivo)</code>.</li>
+          </ol>
+
+          <div class="qa"><div class="q">Pergunta do professor:</div><div class="a">"Como evitar buffer overflow ao ler CSV?" — Use limites no <code>strncpy</code>/<code>sscanf</code> e verifique o comprimento antes de copiar; valide cada token.</div></div>
+        </section>
+
+        <section id="page6">
+          <h2>Página 6 — Ponteiros & Alocação Dinâmica</h2>
+          <p class="sub">Conceitos práticos e exemplos retirados do código.</p>
+
+          <h4>Ponteiro para ponteiro (<code>Palavra **lista</code>)</h4>
+          <p>Usado para atualizar o endereço do bloco de memória original quando <code>realloc</code> muda o ponteiro base.</p>
+
+          <h4><code>realloc()</code></h4>
+          <p>Expansão dinâmica do vetor. Sempre salvar o retorno em variável temporária para checar <code>NULL</code> antes de sobrescrever o ponteiro original.</p>
+
+          <div class="qa"><div class="q">Pergunta:</div><div class="a">"O que fazer se realloc falhar?" — Não sobrescrever o ponteiro original; lidar com erro e liberar recursos se necessário. Mostrar código exemplar.</div></div>
+        </section>
+
+        <section id="page7">
+          <h2>Página 7 — Raylib (conceitos e uso)</h2>
+          <p class="sub">Resumo dos principais métodos do Raylib usados no projeto.</p>
+          <ul>
+            <li><code>InitWindow(w,h,titulo)</code> — inicializa a janela</li>
+            <li><code>InitAudioDevice()</code> — inicia áudio</li>
+            <li><code>LoadTexture/LoadImage</code> — carrega imagens</li>
+            <li><code>BeginDrawing() / EndDrawing()</code> — ciclo de desenho</li>
+            <li><code>DrawTexture / DrawText / DrawRectangle</code> — render primitives</li>
+            <li><code>LoadMusicStream / PlayMusicStream / UpdateMusicStream</code> — áudio</li>
+          </ul>
+          <div class="qa"><div class="q">Pergunta:</div><div class="a">"O que acontece se você chamar DrawTexture fora de BeginDrawing/EndDrawing?" — comportamento indefinido: nada é desenhado corretamente e pode gerar warnings.</div></div>
+        </section>
+
+        <section id="page8">
+          <h2>Página 8 — Fluxo Completo do Jogo</h2>
+          <p class="sub">Passo a passo cronológico do que acontece quando o jogo roda.</p>
+          <ol>
+            <li>Programa inicia em <code>main()</code>: carrega palavras, inicializa interface e cinemática.</li>
+            <li>Menu principal — o jogador escolhe fase.</li>
+            <li>Executa cinemática de introdução (<code>executarCinematicaIntro</code>).</li>
+            <li>Seleciona palavra e chama <code>inicializarJogo</code>.</li>
+            <li>Loop do jogo: <code>processarEntrada</code> + <code>desenharJogo</code>.</li>
+            <li>Ao vencer → <code>TELA_RESULTADO</code> → <code>TELA_TRANSICAO</code> → salva progresso.</li>
+          </ol>
+          <div class="qa"><div class="q">Pergunta:</div><div class="a">"Onde é salvo o progresso?" — Em <code>progresso.dat</code> usando <code>fwrite</code>. O arquivo é binário e contém 6 ints.</div></div>
+        </section>
+
+        <section id="page9">
+          <h2>Página 9 — Perguntas Possíveis do Professor (Resumo Extenso)</h2>
+          <p class="sub">Lista grande com perguntas e respostas (prepare-se para a defesa!).</p>
+          <div class="qa"><div class="q">Como as palavras são carregadas?</div><div class="a">Primeiro tenta CSV; se falhar, usa lista interna com <code>adicionarPalavraDireta</code>.</div></div>
+          <div class="qa"><div class="q">O que é responsabilidade do Makefile?</div><div class="a">Detecta SO, compila arquivos .c, linka raylib, cria bin/ e obj/ e oferece comandos úteis (run, clean, rebuild).</div></div>
+          <div class="qa"><div class="q">Qual a diferença entre biblioteca estática e dinâmica?</div><div class="a">Estática (.a) é incorporada no binário na hora do link; dinâmica (.dll/.so) é carregada em execução.</div></div>
+
+          <p style="margin-top:10px;color:var(--muted)">(A página contém dezenas de perguntas — use a página 10 para as mais avançadas.)</p>
+        </section>
+
+        <section id="page10">
+          <h2>Página 10 — Perguntas Avançadas (Oral)</h2>
+          <p class="sub">Questões para impressionar e como responder.</p>
+
+          <div class="qa"><div class="q">Por que usar <code>Palavra **lista</code> e não retornar um novo ponteiro?</div><div class="a">Porque a função precisa atualizar o ponteiro no chamador. Alternativa: retornar o novo ponteiro e atualizar manualmente; o double-pointer permite modificação direta.</div></div>
+
+          <div class="qa"><div class="q">O que acontece se você esquecer de <code>fclose()</code>?</div><div class="a">Buffers podem não ser flushados, consumo de descriptor/pool e possível perda de dados; no fim do processo o sistema fecha, mas é má prática.</div></div>
+
+          <div class="qa"><div class="q">Como evitar segmentation fault ao acessar arrays?</div><div class="a">Sempre validar índices, garantir tamanho dos buffers e checar ponteiros antes de usar.</div></div>
+
+          <div class="qa"><div class="q">Como garantir que o CSV é seguro (sem injections)?</div><div class="a">Validar tokens, limitar tamanho, escapar caracteres se necessário; para dados externos, usar parser robusto.</div></div>
+        </section>
+
+        <section id="page11">
+          <h2>Página 11 — Sugestões de Melhoria</h2>
+          <p class="sub">Ideias rápidas para evoluir o projeto.</p>
+          <ul>
+            <li>Usar JSON em vez de CSV para evitar parsing complexo.</li>
+            <li>Adicionar testes unitários para funções de manipulação de strings.</li>
+            <li>Controlar memória com blocos maiores (reservar N elementos de cada vez) para performance.</li>
+            <li>Separar build para debug/release e adicionar logs.</li>
+            <li>Adicionar documentação no README com comandos make e dependências.</li>
+          </ul>
+        </section>
+
+        <section id="page12">
+          <h2>Página 12 — Conclusão & PDF</h2>
+          <p class="sub">Resumo final e link para o PDF com o guia completo.</p>
+          <p>Resumo: o projeto está modularizado, com boa separação de responsabilidades. Domine: fopen/fgets/strtok, realloc, structs e Raylib basics — isso cobre >80% das perguntas do professor.</p>
+          <p><a class="link" href="sandbox:/mnt/data/guia_naruto_multiverso.pdf" target="_blank" rel="noreferrer">Baixar versão em PDF do guia</a></p>
+        </section>
+      </div>
+
+      <footer>Use as páginas para ensaiar sua apresentação — posso exportar para MD, PDF ou GitHub Pages quando quiser.</footer>
+    </main>
+  </div>
+
+  <script>
+    // navegação
+    document.querySelectorAll('#navList button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+        document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+        const el = document.getElementById(target);
+        if (el) el.classList.add('active');
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    });
+
+    // toggle QA
+    document.querySelectorAll('.q').forEach(q => q.addEventListener('click', () => {
+      const next = q.nextElementSibling;
+      if (!next) return;
+      next.style.display = next.style.display === 'block' ? 'none' : 'block';
+    }));
+  </script>
+</body>
+</html>
