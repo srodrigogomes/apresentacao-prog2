@@ -4,67 +4,337 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Guia Técnico — Naruto no Multiverso</title>
+  
+  <!-- Importando fontes para garantir o visual correto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#0b1020;--card:#151e2e;--accent:#ff9f43;--accent-glow:rgba(255,159,67,0.15);--muted:#8b9bb4;--text:#e6eef8;--code-bg:#0d1117}
-    body{font-family:'Inter',system-ui,-apple-system,sans-serif;margin:0;background:linear-gradient(180deg,#071025 0%, #050b1a 100%);color:var(--text);line-height:1.6}
+    :root{
+      --bg:#0b1020;
+      --card:#151e2e;
+      --accent:#ff9f43;
+      --accent-glow:rgba(255,159,67,0.15);
+      --muted:#8b9bb4;
+      --text:#e6eef8;
+      --code-bg:#0d1117;
+    }
+    
+    body{
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      margin:0;
+      background:linear-gradient(180deg,#071025 0%, #050b1a 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
     
     /* Layout */
-    header{padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:16px;background:rgba(11,16,32,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
-    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#ff9f43,#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:20px;box-shadow:0 4px 12px var(--accent-glow)}
-    h1{font-size:20px;margin:0;font-weight:700;letter-spacing:-0.5px}
-    .container{display:flex;gap:32px;padding:32px;max-width:1400px;margin:0 auto}
+    header{
+      padding:20px 28px;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      display:flex;
+      align-items:center;
+      gap:16px;
+      background:rgba(11,16,32,0.95);
+      backdrop-filter:blur(10px);
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background:linear-gradient(135deg,#ff9f43,#ff6b6b);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:#fff;
+      font-size:20px;
+      box-shadow:0 4px 12px var(--accent-glow);
+    }
+    
+    h1{
+      font-size:20px;
+      margin:0;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+    
+    .container{
+      display:flex;
+      gap:32px;
+      padding:32px;
+      max-width:1400px;
+      margin:0 auto;
+    }
     
     /* Nav */
-    nav{width:300px;min-width:300px;position:sticky;top:100px;height:fit-content;max-height:80vh;overflow-y:auto}
-    .nav-card{background:var(--card);border-radius:16px;padding:16px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
-    .nav-list{list-style:none;padding:0;margin:0}
-    .nav-list li{margin-bottom:6px}
-    .nav-list button{width:100%;text-align:left;padding:12px 16px;border-radius:10px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px}
-    .nav-list button:hover{background:rgba(255,255,255,0.03);color:var(--text);transform:translateX(4px)}
-    .nav-list button.active{background:linear-gradient(90deg, rgba(255,159,67,0.1) 0%, transparent 100%);color:var(--accent);font-weight:600;border-left:3px solid var(--accent)}
+    nav{
+      width:300px;
+      min-width:300px;
+      position:sticky;
+      top:100px;
+      height:fit-content;
+      max-height:80vh;
+      overflow-y:auto;
+    }
+
+    /* Scrollbar customizada para o menu */
+    nav::-webkit-scrollbar {
+      width: 6px;
+    }
+    nav::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.02);
+    }
+    nav::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+    }
+    
+    .nav-card{
+      background:var(--card);
+      border-radius:16px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .nav-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    
+    .nav-list li{
+      margin-bottom:6px;
+    }
+    
+    .nav-list button{
+      width:100%;
+      text-align:left;
+      padding:12px 16px;
+      border-radius:10px;
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      cursor:pointer;
+      transition:all 0.2s;
+      font-size:14px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .nav-list button:hover{
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      transform:translateX(4px);
+    }
+    
+    .nav-list button.active{
+      background:linear-gradient(90deg, rgba(255,159,67,0.1) 0%, transparent 100%);
+      color:var(--accent);
+      font-weight:600;
+      border-left:3px solid var(--accent);
+    }
     
     /* Main Content */
-    main{flex:1;min-height:80vh}
-    section{display:none;animation:fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)}
-    section.active{display:block}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    main{
+      flex:1;
+      min-height:80vh;
+    }
     
-    h2{margin-top:0;font-size:28px;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:20px;margin-bottom:24px;color:#fff}
-    h3{margin-top:32px;margin-bottom:16px;font-size:20px;color:#fff;display:flex;align-items:center;gap:10px}
-    p{margin-bottom:18px;color:var(--muted);font-size:16px}
+    section{
+      display:none;
+      animation:fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    section.active{
+      display:block;
+    }
+    
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    
+    h2{
+      margin-top:0;
+      font-size:28px;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      padding-bottom:20px;
+      margin-bottom:24px;
+      color:#fff;
+    }
+    
+    h3{
+      margin-top:32px;
+      margin-bottom:16px;
+      font-size:20px;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    
+    p{
+      margin-bottom:18px;
+      color:var(--muted);
+      font-size:16px;
+    }
     
     /* Code & Technical Blocks */
-    .tech-box{background:var(--code-bg);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);margin-bottom:24px;font-family:'Fira Code',monospace;font-size:14px;overflow-x:auto}
-    code{background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;color:#ff9f43;font-family:'Fira Code',monospace;font-size:0.9em}
-    .function-name{color:#61afef;font-weight:bold}
-    .variable{color:#e06c75}
-    .keyword{color:#c678dd}
-    .comment{color:#7f848e;font-style:italic}
+    .tech-box{
+      background:var(--code-bg);
+      padding:20px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+      margin-bottom:24px;
+      font-family:'Fira Code',monospace;
+      font-size:14px;
+      overflow-x:auto;
+      line-height: 1.8;
+    }
+    
+    code{
+      background:rgba(255,255,255,0.1);
+      padding:2px 6px;
+      border-radius:4px;
+      color:#ff9f43;
+      font-family:'Fira Code',monospace;
+      font-size:0.9em;
+    }
+    
+    .function-name{color:#61afef;font-weight:bold;}
+    .variable{color:#e06c75;}
+    .keyword{color:#c678dd;}
+    .comment{color:#7f848e;font-style:italic;}
     
     /* Defense Tips (Questions) */
-    .defense-tip{background:rgba(255, 159, 67, 0.05);border-left:4px solid var(--accent);padding:20px;border-radius:0 12px 12px 0;margin:24px 0;position:relative}
-    .defense-tip strong{color:var(--accent);display:block;margin-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800}
+    .defense-tip{
+      background:rgba(255, 159, 67, 0.05);
+      border-left:4px solid var(--accent);
+      padding:20px;
+      border-radius:0 12px 12px 0;
+      margin:24px 0;
+      position:relative;
+    }
+    
+    .defense-tip strong{
+      color:var(--accent);
+      display:block;
+      margin-bottom:8px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:800;
+    }
     
     /* Question Box */
-    .qa-box{background:rgba(255,255,255,0.03);border-radius:8px;margin-bottom:16px;border:1px solid rgba(255,255,255,0.05)}
-    .qa-q{padding:12px 16px;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;align-items:center}
-    .qa-q:hover{background:rgba(255,255,255,0.02)}
-    .qa-a{padding:16px;border-top:1px solid rgba(255,255,255,0.05);color:var(--muted);font-size:14px;display:none;background:rgba(0,0,0,0.2)}
-    .qa-a.open{display:block}
+    .qa-box{
+      background:rgba(255,255,255,0.03);
+      border-radius:8px;
+      margin-bottom:16px;
+      border:1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    
+    .qa-q{
+      padding:16px;
+      cursor:pointer;
+      font-weight:600;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      user-select: none;
+    }
+    
+    .qa-q:hover{
+      background:rgba(255,255,255,0.05);
+    }
+    
+    .qa-a{
+      padding:16px;
+      border-top:1px solid rgba(255,255,255,0.05);
+      color:var(--muted);
+      font-size:15px;
+      display:none;
+      background:rgba(0,0,0,0.2);
+      line-height: 1.6;
+    }
+    
+    .qa-a.open{
+      display:block;
+      animation: slideDown 0.2s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
     
     /* Diagrams (Visual Explanations) */
-    .visual-diagram{background:#0d1117;padding:20px;border-radius:12px;margin:20px 0;text-align:center;border:1px dashed #30363d}
-    .memory-block{display:inline-block;padding:10px 20px;background:#23272e;border:1px solid #3e4451;border-radius:6px;margin:0 5px;color:#abb2bf;font-size:13px}
-    .arrow{display:inline-block;margin:0 10px;color:#61afef;font-size:20px}
-    .null-char{color:#e06c75;font-weight:bold}
+    .visual-diagram{
+      background:#0d1117;
+      padding:20px;
+      border-radius:12px;
+      margin:20px 0;
+      text-align:center;
+      border:1px dashed #30363d;
+    }
+    
+    .memory-block{
+      display:inline-block;
+      padding:10px 20px;
+      background:#23272e;
+      border:1px solid #3e4451;
+      border-radius:6px;
+      margin:0 5px;
+      color:#abb2bf;
+      font-size:13px;
+    }
+    
+    .arrow{
+      display:inline-block;
+      margin:0 10px;
+      color:#61afef;
+      font-size:20px;
+    }
+    
+    .null-char{
+      color:#e06c75;
+      font-weight:bold;
+    }
     
     /* Utility Tags */
-    .tag{display:inline-block;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700;margin-right:8px;text-transform:uppercase;letter-spacing:0.5px}
+    .tag{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:99px;
+      font-size:11px;
+      font-weight:700;
+      margin-right:8px;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    
     .tag.c{background:rgba(97, 175, 239, 0.15);color:#61afef}
     .tag.mem{background:rgba(224, 108, 117, 0.15);color:#e06c75}
     .tag.struct{background:rgba(198, 120, 221, 0.15);color:#c678dd}
 
-    @media(max-width:900px){.container{flex-direction:column;padding:16px}nav{width:100%;position:static;max-height:none}}
+    @media(max-width:900px){
+      .container{flex-direction:column;padding:16px}
+      nav{width:100%;position:static;max-height:none; min-width: auto;}
+      .logo{margin-bottom: 0;}
+    }
   </style>
 </head>
 <body>
@@ -245,35 +515,35 @@
           <p>Possíveis perguntas capciosas que testam se você realmente entende o que o código faz.</p>
 
           <div class="qa-box">
-            <div class="qa-q">1. O que acontece se eu apagar o arquivo progresso.dat? <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">1. O que acontece se eu apagar o arquivo progresso.dat? <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               "Na função <code>carregarProgresso</code> (jogo.c), temos uma verificação <code>if (arquivo == NULL)</code>. Se o arquivo não existir (foi apagado), o código entende que é um novo jogo, reseta todas as variáveis e libera apenas a Fase 1. O jogo não trava."
             </div>
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">2. E se eu adicionar uma palavra muito grande no CSV? <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">2. E se eu adicionar uma palavra muito grande no CSV? <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               "Definimos na struct <code>Palavra</code> que o tamanho máximo é 30 chars. Ao ler o CSV, usamos a função <code>strncpy</code> limitando a cópia para <code>sizeof(palavra) - 1</code>. Isso corta o excesso da palavra e previne o <strong>Buffer Overflow</strong>, que poderia corromper a memória do jogo."
             </div>
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">3. O que acontece se a gente não der UnloadTexture? <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">3. O que acontece se a gente não der UnloadTexture? <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               "Ocorre um <strong>Memory Leak (Vazamento de Memória)</strong> na VRAM (GPU). Se trocarmos de tela muitas vezes sem descarregar as imagens anteriores, a memória de vídeo vai encher até o jogo travar ou fechar sozinho. Por isso criamos a função <code>descarregarRecursosCinematica</code>."
             </div>
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">4. Se eu mudar a ordem das fases na struct EstadoTela? <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">4. Se eu mudar a ordem das fases na struct EstadoTela? <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               "Se você mudar a ordem no <code>enum</code>, precisa atualizar a ordem no <code>switch(telaAtual)</code> no <code>main.c</code>. Se não fizer isso, o botão 'Créditos' pode acabar levando para 'Instruções', por exemplo, pois os enums são apenas números inteiros por baixo dos panos (0, 1, 2...)."
             </div>
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">5. O que acontece se alterar a struct Palavra e carregar um save antigo? <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">5. O que acontece se alterar a struct Palavra e carregar um save antigo? <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               "O save <code>progresso.dat</code> usa gravação binária crua (fwrite). Se alterarmos a estrutura dos dados no código, o layout da memória muda. Ao tentar ler um arquivo antigo, os bytes não vão bater e os dados virão corrompidos (lixo de memória). Seria necessário apagar o save antigo."
             </div>
@@ -288,7 +558,7 @@
           <p>Explicação técnica de funções específicas do C que estão no seu código.</p>
 
           <div class="qa-box">
-            <div class="qa-q">memset(estado, 0, sizeof(EstadoJogo)); <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">memset(estado, 0, sizeof(EstadoJogo)); <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               <strong>Local:</strong> jogo.c (inicializarJogo)<br><br>
               "Ela preenche todo o bloco de memória da variável com zeros. Isso é crucial para garantir que não haja 'lixo de memória' (valores aleatórios que estavam na RAM) nas nossas variáveis. Garante que <code>venceu = 0</code>, <code>tentativaAtual = 0</code>, etc."
@@ -296,7 +566,7 @@
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">strtok(NULL, "|"); <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">strtok(NULL, "|"); <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               <strong>Local:</strong> cinematica.c<br><br>
               "O <code>strtok</code> divide uma string em pedaços. Na primeira vez chamamos com a string. Nas vezes seguintes, passamos <code>NULL</code> para dizer à função: 'continue dividindo a <strong>mesma string</strong> de onde você parou na chamada anterior'."
@@ -304,7 +574,7 @@
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">linha[strcspn(linha, "\r\n")] = 0; <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">linha[strcspn(linha, "\r\n")] = 0; <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               <strong>Local:</strong> palavras.c<br><br>
               "Quando usamos <code>fgets</code> para ler do CSV, ele traz junto o 'Enter' (\n) do final da linha. Essa função calcula o tamanho da string até achar o \n e substitui ele por 0 (null terminator), limpando a string para uso correto."
@@ -312,7 +582,7 @@
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">GetFrameTime(); <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">GetFrameTime(); <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               <strong>Local:</strong> cinematica.c<br><br>
               "Retorna o tempo que o último frame demorou para ser desenhado. Usamos isso para mover o Naruto. Em vez de dizer 'mova 5 pixels por frame', dizemos 'mova X pixels por segundo'. Isso garante que o jogo rode na mesma velocidade em PCs rápidos e lentos (Delta Time)."
@@ -320,7 +590,7 @@
           </div>
 
           <div class="qa-box">
-            <div class="qa-q">realloc(*lista, ...); <span style="color:var(--accent)">+</span></div>
+            <div class="qa-q">realloc(*lista, ...); <span style="color:var(--accent); font-weight:800; font-size:18px;">+</span></div>
             <div class="qa-a">
               <strong>Local:</strong> palavras.c<br><br>
               "Tenta redimensionar um bloco de memória já alocado. Se o bloco atual não tiver espaço para crescer vizinho a ele na memória, o <code>realloc</code> aloca um novo bloco em outro lugar, copia os dados e libera o antigo. Por isso precisamos atualizar o ponteiro."
@@ -346,6 +616,23 @@
              <strong style="color:#2ecc71">💡 Destaque Final: Escalabilidade</strong>
              <p>"A estrutura do código permite adicionar novas fases apenas adicionando linhas no CSV e uma imagem na pasta assets, sem precisar recompilar todo o código para adicionar conteúdo simples. O projeto está pronto para crescer."</p>
           </div>
+
+          <!-- Botão do Quiz Adicionado -->
+          <div style="margin-top: 40px; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="margin-bottom: 20px; color: var(--text);">Está pronto para provar que domina o código?</p>
+            <a href="https://srodrigogomes.github.io/Jogo-do-projeto/" target="_blank" style="display: inline-block; background: var(--accent); color: #0b1020; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 16px; box-shadow: 0 4px 20px var(--accent-glow); transition: all 0.2s ease; border: 2px solid var(--accent);">
+              🎮 Iniciar Quiz do Código
+            </a>
+            <style>
+              a[href*="github.io"]:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px var(--accent-glow) !important;
+                background: #fff !important;
+                border-color: #fff !important;
+              }
+            </style>
+          </div>
+
         </div>
       </section>
 
@@ -359,12 +646,23 @@
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
+        // Remove classes ativas
         buttons.forEach(b => b.classList.remove('active'));
         sections.forEach(s => s.classList.remove('active'));
+        
+        // Ativa os elementos clicados
         btn.classList.add('active');
         const targetId = btn.getAttribute('data-target');
-        document.getElementById(targetId).classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        const targetSection = document.getElementById(targetId);
+        targetSection.classList.add('active');
+        
+        // Scroll suave para o topo do conteúdo em mobile
+        const main = document.querySelector('main');
+        if (window.innerWidth <= 900) {
+            main.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
       });
     });
 
@@ -373,9 +671,15 @@
     qas.forEach(q => {
       q.addEventListener('click', () => {
         const answer = q.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+        
+        // Toggle da classe
         answer.classList.toggle('open');
+        
+        // Atualiza o ícone
         const symbol = q.querySelector('span');
-        symbol.textContent = answer.classList.contains('open') ? '-' : '+';
+        symbol.textContent = isOpen ? '+' : '-';
+        symbol.style.color = isOpen ? 'var(--accent)' : '#2ecc71'; // Muda cor quando aberto
       });
     });
   </script>
